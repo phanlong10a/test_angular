@@ -1,1 +1,109 @@
 @import "partials/page";
+.container {
+    display: flex;
+    // height: 100vh;
+    user-select: none;
+}
+
+.split-pane {
+    overflow: auto;
+}
+
+.split-pane-left {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.split-pane-right {
+    flex-grow: 1;
+}
+
+.split-gutter {
+    width: 5px;
+    cursor: col-resize;
+    background-color: #ccc;
+    flex-shrink: 0;
+}
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.split-example {
+    height: 100%;
+}
+.child-test-component {
+    min-width: 300px;
+}
+.test-component {
+    overflow: auto;
+    height: 100%;
+}
+.container {
+    margin: 20px;
+}
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.txt-min,
+.txt-max,
+.txt-minmax {
+    pointer-events: none;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.txt-min > p,
+.txt-max > p,
+.txt-minmax > p {
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--gray);
+    text-align: center;
+}
+
+ui-split-area {
+    background: var(--cyan);
+    transition: background 0.2s;
+    position: relative;
+    overflow: hidden !important;
+}
+
+ui-split-area > p {
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px;
+    line-height: 12px;
+}
+
+ui-split-area.ngx-min {
+    background: var(--green);
+}
+ui-split-area.ngx-min .txt-min {
+    opacity: 1;
+}
+ui-split-area.ngx-max {
+    background: var(--red);
+}
+ui-split-area.ngx-max .txt-max {
+    opacity: 1;
+}
+ui-split-area.ngx-min.ngx-max {
+    background: var(--pink);
+}
+ui-split-area.ngx-min.ngx-max .txt-minmax {
+    opacity: 1;
+}

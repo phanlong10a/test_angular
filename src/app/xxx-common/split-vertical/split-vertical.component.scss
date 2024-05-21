@@ -1,0 +1,15 @@
+.split-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.split-pane {
+    overflow: auto;
+}
+
+.split-gutter {
+    height: 5px;
+    cursor: row-resize;
+    background-color: #ccc;
+}

@@ -1,0 +1,17 @@
+<!-- split.component.html -->
+<div>
+    <button (click)="resizeLeftPaneTo50()">Resize Left Pane to 50%</button>
+</div>
+<div class="split-container" #splitContainer (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp()">
+    <div class="split-pane split-pane-left" [style.width.px]="leftPaneWidth">
+        <ng-content select="[left-pane]"></ng-content>
+    </div>
+    <div class="split-gutter" (mousedown)="onMouseDown($event, 'left')"></div>
+    <div class="split-pane split-pane-middle" [style.width.px]="middlePaneWidth">
+        <ng-content select="[middle-pane]"></ng-content>
+    </div>
+    <div class="split-gutter" (mousedown)="onMouseDown($event, 'right')" [style.width.px]="endPaneWidth"></div>
+    <div class="split-pane split-pane-right">
+        <ng-content select="[right-pane]"></ng-content>
+    </div>
+</div>

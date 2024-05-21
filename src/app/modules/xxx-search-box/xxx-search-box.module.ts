@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-
+import {MatSliderModule} from '@angular/material/slider';
 import {XxxEventMgrModule, XxxStateStoreModule} from '@app/xxx-common';
 import {XxxSearchModule} from '@app/modules/xxx-search/xxx-search.module';
 import {XxxSearchBoxComponent} from './xxx-search-box.component';
@@ -16,7 +16,8 @@ import {XxxSearchBoxComponent} from './xxx-search-box.component';
     MatIconModule,
     XxxEventMgrModule,
     XxxSearchModule,
-    XxxStateStoreModule
+    XxxStateStoreModule,
+    MatSliderModule
   ]
 })
 

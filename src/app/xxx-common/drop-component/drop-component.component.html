@@ -1,0 +1,6 @@
+<div class="example-container">
+    <h2>Done</h2>
+    <div cdkDropList #doneList="cdkDropList" id="#doneList" [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    </div>
+</div>

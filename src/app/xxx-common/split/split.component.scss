@@ -1,0 +1,31 @@
+/* split.component.css */
+button {
+    margin-bottom: 10px;
+}
+
+.split-container {
+    display: flex;
+    height: calc(100vh - 40px); /* Adjust height to accommodate button */
+    user-select: none;
+}
+
+.split-pane {
+    overflow: auto;
+}
+
+.split-pane-left,
+.split-pane-middle {
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.split-pane-right {
+    flex-grow: 1;
+}
+
+.split-gutter {
+    width: 5px;
+    cursor: col-resize;
+    background-color: #ccc;
+    flex-shrink: 0;
+}

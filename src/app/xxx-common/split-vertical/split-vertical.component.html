@@ -1,0 +1,9 @@
+<div class="split-container" #splitContainer (mousemove)="onMouseMove($event)" (mouseup)="onMouseUp()">
+  <div class="split-pane split-pane-top" [style.height.px]="topPaneHeight">
+    <ng-content select="[top-pane]"></ng-content>
+  </div>
+  <div class="split-gutter" (mousedown)="onMouseDown($event)"></div>
+  <div class="split-pane split-pane-bottom">
+    <ng-content select="[bottom-pane]"></ng-content>
+  </div>
+</div>

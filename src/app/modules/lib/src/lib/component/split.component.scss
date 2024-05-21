@@ -1,0 +1,92 @@
+:host {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  & > .ui-split-gutter {
+    flex-grow: 0;
+    flex-shrink: 0;
+    background-color: #eeeeee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > .ui-split-gutter-icon {
+      width: 100%;
+      height: 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  ::ng-deep > .ui-split-area {
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    /* When <ui-split-area [visible]="false"> force size to 0. */
+
+    &.ngx-hidden {
+      flex: 0 1 0 !important;
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+  }
+
+  &.ngx-horizontal {
+    flex-direction: row;
+
+    & > .ui-split-gutter {
+      flex-direction: row;
+      cursor: col-resize;
+    }
+
+    ::ng-deep > .ui-split-area {
+      height: 100%;
+    }
+  }
+
+  &.ngx-vertical {
+    flex-direction: column;
+
+    & > .ui-split-gutter {
+      flex-direction: column;
+      cursor: row-resize;
+      width: 100%;
+    }
+
+    ::ng-deep > .ui-split-area {
+      width: 100%;
+
+      &.ngx-hidden {
+        max-width: 0;
+      }
+    }
+  }
+
+  /* When disabled remove gutters background image and specific cursor. */
+
+  &.ngx-disabled {
+    & > .ui-split-gutter {
+      cursor: default;
+
+      .ui-split-gutter-icon {
+        background-image: none;
+      }
+    }
+  }
+
+  /* Add transition only when transition enabled + split initialized + not currently dragging. */
+
+  &.ngx-transition.ngx-init:not(.ngx-dragging) {
+    & > .ui-split-gutter,
+    ::ng-deep > .ui-split-area {
+      transition: flex-basis 0.3s;
+    }
+  }
+}

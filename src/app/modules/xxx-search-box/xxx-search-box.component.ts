@@ -44,6 +44,10 @@ export class XxxSearchBoxComponent implements OnDestroy, OnInit {
     this.xxxEventMgrService.handleEvent('searchBox.search');
   }
 
+  onSliderChanges() {
+    console.log('onSliderChanges')
+  }
+
   ngOnDestroy(): void {
     this.subscriptionButtonEnable.unsubscribe();
   }
