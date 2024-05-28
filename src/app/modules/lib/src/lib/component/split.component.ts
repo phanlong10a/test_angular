@@ -235,7 +235,7 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
       component,
       order: 0,
       size: 0,
-      minSize: null,
+      minSize: this._minSize ? this._minSize : null,
       maxSize: null,
     };
 
@@ -405,26 +405,26 @@ export class SplitComponent implements AfterViewInit, OnDestroy {
             // More than one wildcard area > Need to keep only one arbitrarly > first
             else if (wildcardSizeAreas.length > 1) {
               let alreadyGotOne = false;
-              console.log(
-                "🚀 ~ SplitComponent ~ build ~ alreadyGotOne:",
-                alreadyGotOne
-              );
               this.displayedAreas.forEach((area) => {
                 if (area.component.size === null) {
                   if (alreadyGotOne === false) {
                     area.size = null;
-                    area.minSize = null;
-                    area.maxSize = null;
+                    area.minSize = this._minSize ? this._minSize : null;
+                    area.maxSize = this._maxSize ? this._maxSize : null;
                     alreadyGotOne = true;
                   } else {
                     area.size = 100;
-                    area.minSize = null;
-                    area.maxSize = null;
+                    area.minSize = this._minSize ? this._minSize : null;
+                    area.maxSize = this._maxSize ? this._maxSize : null;
                   }
                 } else {
                   area.size = area.component.size;
-                  area.minSize = getAreaMinSize(area);
-                  area.maxSize = getAreaMaxSize(area);
+                  area.minSize = this._minSize
+                    ? this._minSize
+                    : getAreaMinSize(area);
+                  area.maxSize = this._maxSize
+                    ? this._maxSize
+                    : getAreaMaxSize(area);
                 }
               });
             }

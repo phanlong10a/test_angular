@@ -3,7 +3,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "xxx-drop-component",
@@ -11,12 +11,15 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./drop-component.component.scss"],
 })
 export class DropComponentComponent {
-  todo = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
+  done = [];
 
-  done = ["Get up", "Brush teeth", "Take a shower", "Check e-mail", "Walk dog"];
+  constructor(private readonly dtc: ChangeDetectorRef) {}
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log(event.previousContainer.data);
-    console.log(event.previousContainer.data[event.previousIndex]);
+    if (event.previousContainer === event.container) {
+      return;
+    }
+    this.done.push(event.previousContainer.data[event.previousIndex]);
+    this.dtc.detectChanges();
   }
 }

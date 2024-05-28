@@ -6,15 +6,15 @@ import {
   OnInit,
   OnDestroy,
   NgZone,
-} from '@angular/core';
+} from "@angular/core";
 
-import { SplitComponent } from '../component/split.component';
-import { IAreaSize } from '../interface';
-import { getInputPositiveNumber, getInputBoolean } from '../utils';
+import { SplitComponent } from "../component/split.component";
+import { IAreaSize } from "../interface";
+import { getInputPositiveNumber, getInputBoolean } from "../utils";
 
 @Directive({
-  selector: 'ui-split-area, [ui-split-area]',
-  exportAs: 'uiSplitArea',
+  selector: "ui-split-area, [ui-split-area]",
+  exportAs: "uiSplitArea",
 })
 export class SplitAreaDirective implements OnInit, OnDestroy {
   private _order: number | null = null;
@@ -33,7 +33,6 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
 
   @Input() set size(v: IAreaSize) {
     this._size = getInputPositiveNumber(v, null);
-
     this.split.updateArea(this, false, true);
   }
 
@@ -84,10 +83,10 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
 
     if (this._visible) {
       this.split.showArea(this);
-      this.renderer.removeClass(this.elRef.nativeElement, 'ngx-hidden');
+      this.renderer.removeClass(this.elRef.nativeElement, "ngx-hidden");
     } else {
       this.split.hideArea(this);
-      this.renderer.addClass(this.elRef.nativeElement, 'ngx-hidden');
+      this.renderer.addClass(this.elRef.nativeElement, "ngx-hidden");
     }
   }
 
@@ -104,7 +103,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private split: SplitComponent
   ) {
-    this.renderer.addClass(this.elRef.nativeElement, 'ui-split-area');
+    this.renderer.addClass(this.elRef.nativeElement, "ui-split-area");
   }
 
   public ngOnInit(): void {
@@ -113,11 +112,11 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       this.transitionListener = this.renderer.listen(
         this.elRef.nativeElement,
-        'transitionend',
+        "transitionend",
         (event: TransitionEvent) => {
           // Limit only flex-basis transition to trigger the event
-          if (event.propertyName === 'flex-basis') {
-            this.split.notify('transitionEnd', -1);
+          if (event.propertyName === "flex-basis") {
+            this.split.notify("transitionEnd", -1);
           }
         }
       );
@@ -125,7 +124,7 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
   }
 
   public setStyleOrder(value: number): void {
-    this.renderer.setStyle(this.elRef.nativeElement, 'order', value);
+    this.renderer.setStyle(this.elRef.nativeElement, "order", value);
   }
 
   public setStyleFlex(
@@ -136,17 +135,17 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
     isMax: boolean
   ): void {
     // Need 3 separated properties to work on IE11 (https://github.com/angular/flex-layout/issues/323)
-    this.renderer.setStyle(this.elRef.nativeElement, 'flex-grow', grow);
-    this.renderer.setStyle(this.elRef.nativeElement, 'flex-shrink', shrink);
-    this.renderer.setStyle(this.elRef.nativeElement, 'flex-basis', basis);
+    this.renderer.setStyle(this.elRef.nativeElement, "flex-grow", grow);
+    this.renderer.setStyle(this.elRef.nativeElement, "flex-shrink", shrink);
+    this.renderer.setStyle(this.elRef.nativeElement, "flex-basis", basis);
 
     if (isMin === true)
-      this.renderer.addClass(this.elRef.nativeElement, 'ngx-min');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-min');
+      this.renderer.addClass(this.elRef.nativeElement, "ngx-min");
+    else this.renderer.removeClass(this.elRef.nativeElement, "ngx-min");
 
     if (isMax === true)
-      this.renderer.addClass(this.elRef.nativeElement, 'ngx-max');
-    else this.renderer.removeClass(this.elRef.nativeElement, 'ngx-max');
+      this.renderer.addClass(this.elRef.nativeElement, "ngx-max");
+    else this.renderer.removeClass(this.elRef.nativeElement, "ngx-max");
   }
 
   public lockEvents(): void {
@@ -154,14 +153,14 @@ export class SplitAreaDirective implements OnInit, OnDestroy {
       this.lockListeners.push(
         this.renderer.listen(
           this.elRef.nativeElement,
-          'selectstart',
+          "selectstart",
           (e: Event) => false
         )
       );
       this.lockListeners.push(
         this.renderer.listen(
           this.elRef.nativeElement,
-          'dragstart',
+          "dragstart",
           (e: Event) => false
         )
       );

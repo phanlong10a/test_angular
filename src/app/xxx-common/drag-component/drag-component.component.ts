@@ -3,16 +3,20 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 @Component({
   selector: "xxx-drag-component",
   templateUrl: "./drag-component.component.html",
   styleUrls: ["./drag-component.component.scss"],
 })
 export class DragComponentComponent {
-  todo = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
+  @Input() todo: string[] = [];
 
-  done = ["Get up", "Brush teeth", "Take a shower", "Check e-mail", "Walk dog"];
+  constructor() {
+    setTimeout(() => {
+      console.log(this.todo);
+    });
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {

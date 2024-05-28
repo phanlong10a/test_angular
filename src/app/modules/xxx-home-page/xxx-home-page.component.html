@@ -1,53 +1,58 @@
+<button (click)="resize()">
+    change size
+</button>
+<button (click)="collapse1()">
+    collapse tab1
+</button>
+<button (click)="collapse2()">
+    collapse tab2
+</button>
+<button (click)="open1()">
+    open tab1
+</button>
+<button (click)="open2()">
+    open tab2
+</button>
 <div class="container">
     <div class="split-example" #splitComponent>
         <ui-split direction="horizontal" [restrictMove]="false" [useTransition]="true" unit="pixel"
             [minSize]="minWidth">
-            <ui-split-area [size]="200">
-                <div style="height: 300px;">
-                    <ui-split direction="vertical" [restrictMove]="false" [restrictMove]="true" unit="pixel" [useTransition]="true" [minSize]="50">
-                        <ui-split-area>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tiam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur.
-                            </p>
+            <ui-split-area [size]="width1">
+                <div style="height: 100%;" class="normal">
+                    <ui-split direction="vertical" [restrictMove]="false" [restrictMove]="true" unit="pixel"
+                        [useTransition]="true" [minSize]="50">
+                        <ui-split-area class="overflow-y">
+                            <div class="overflow-x min-width-300">
+                                <xxx-drag-component [todo]="['item1', 'item2']"></xxx-drag-component>
+                            </div>
                         </ui-split-area>
-                        <ui-split-area>
-                            <p>
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                                accusantium doloremque laudantium, totam rem aperiam, eaque
-                                ipsa quae ab illo inventore veritatis et quasi architecto
-                                beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                                quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                consequuntur magni dolores eodolor sit amet, consectetur,
-                                adipisci velit, sed quia non numquam eius modi tempora
-                                incidunt ut labore et dolore magnam aliquam quaerat
-                                voluptatem. Ut enim ad minima veniam, quis nostrum
-                                exercitationem ullam corporis suscipit laboriosam, nisi ut
-                                aliquid ex ea commodi consequatur? Quis autem vel eum iure
-                                reprehenderit qui in ea voluptate velit esse quam nihil
-                                molestiae consequatur, vel illum qui dolorem eum fugiat quo
-                                voluptas nulla pariatur?
-                            </p>
+                        <ui-split-area class="overflow-y">
+                            <div class="overflow-x min-width-300">
+                                <xxx-drag-component [todo]="['itemxl', 'item3']"></xxx-drag-component>
+                            </div>
                         </ui-split-area>
-                        <ui-split-area>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                                do eiusmod tiam, quis nostrud exercitation ullamco laboris
-                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                                in reprehenderit in voluptate velit esse cillum dolore eu
-                                fugiat nulla pariatur.
-                            </p>
+                        <ui-split-area class="overflow-y">
+                            <div class="overflow-x min-width-300">
+                                <xxx-drag-component [todo]="['item4', 'item5']"></xxx-drag-component>
+                            </div>
                         </ui-split-area>
                     </ui-split>
                 </div>
+                <div class="txt-min">
+                    <span>
+                        minimum
+                    </span>
+                </div>
             </ui-split-area>
-            <ui-split-area [size]="550">
-                <xxx-drop-component></xxx-drop-component>
+            <ui-split-area [(size)]="width2">
+                <xxx-drop-component class="normal"></xxx-drop-component>
+                <div class="txt-min">
+                    <span>
+                        minimum2
+                    </span>
+                </div>
             </ui-split-area>
-            <ui-split-area [size]="250">
+            <ui-split-area #lastComponent>
                 <div class="test-component">
                     <div class="child-test-component">
                         <p>
